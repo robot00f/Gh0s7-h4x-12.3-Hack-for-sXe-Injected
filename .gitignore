@@ -1,0 +1,54 @@
+# Build Artifacts
+build/
+bin/
+obj/
+*.exe
+*.dll
+*.so
+*.dylib
+*.o
+*.obj
+*.lib
+*.a
+*.exp
+
+# Allow specific research artifacts
+!artifacts/*.dll
+!artifacts/*.bin
+
+# Delphi Compilation
+*.dcu
+*.~*
+*.stat
+*.local
+*.identcache
+*.dproj.local
+*.tvsconfig
+
+# Visual Studio & IDEs
+.vs/
+*.sln.docstates
+*.suo
+*.user
+*.userosscache
+*.ncb
+*.opensdf
+*.sdf
+*.VC.db
+*.VC.opendb
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Logs and Dumps
+*.log
+*.dmp
+*.mdmp
+
+# OS Specific
+.DS_Store
+Thumbs.db
+Desktop.ini
