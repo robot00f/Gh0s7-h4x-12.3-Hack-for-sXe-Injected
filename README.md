@@ -31,8 +31,11 @@ gh0s7h4x-reconstructed/
 ├── .gitignore                  # Git ignore rules for Delphi, MSVC, and Python
 │
 ├── artifacts/                  # Forensic binaries, dumps & disassembly
-│   ├── payload_memory_dump.bin # Raw process memory dump (Base 0x04C50000, 1.44 MB)
+│   ├── lolwut32.dll            # Original packed binary from leak (1.27 MB)
 │   ├── lolwut_clean.dll        # Unpacked & repaired PE binary (1.57 MB)
+│   ├── payload_memory_dump.bin # Raw process memory dump (Base 0x04C50000, 1.44 MB)
+│   ├── iat_resolved.txt        # Resolved IAT imports table
+│   ├── relocs_v5.bin           # Serialized base relocation table
 │   ├── disassembly_delphi_code.asm # Full x86 disassembly (55,534 instructions)
 │   ├── decompiled_source.cpp   # Base decompiled C++ core unit
 │   └── decompiled_source.pas   # Base decompiled Delphi Pascal core unit
