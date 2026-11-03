@@ -46,6 +46,7 @@ gh0s7h4x-reconstructed/
 │   └── OFFSETS.md              # Full memory map, RVAs, and struct offsets
 │
 ├── tools/
+│   ├── build_perfect_clean.py  # Unpacker & standalone clean PE reconstructor
 │   ├── symbols_map.py          # Master symbol mapping generator
 │   ├── apply_symbols_ida.idc   # Automated IDA Pro symbol script
 │   └── apply_symbols_ghidra.py # Automated Ghidra symbol script
