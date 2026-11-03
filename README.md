@@ -1,51 +1,44 @@
 # Gh0s7 h4x 12.3 Hack for sXe-Injected (xZone-Reactor CS 1.6)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Target: Counter-Strike 1.6](https://img.shields.io/badge/Target-GoldSrc%201.6-orange.svg)]()
-[![Language: C++17](https://img.shields.io/badge/Language-C%2B%2B17-blue.svg)]()
-[![Language: Delphi](https://img.shields.io/badge/Language-Borland%20Delphi%207-red.svg)]()
-[![Architecture: x86](https://img.shields.io/badge/Arch-x86-lightgrey.svg)]()
-
-> **Forensic reverse engineering, memory dump analysis, and complete clean-room source code reconstruction of the famous Gh0s7 H4x v12.3 from xZone-Reactor for Counter-Strike 1.6 (recovered from a leaked & cracked build).**
+Reverse engineering, memory dump analysis, and clean-room source code reconstruction of Gh0s7 H4x v12.3 from xZone-Reactor for Counter-Strike 1.6 (GoldSrc).
 
 ---
 
-## 📖 Research Context
+## Overview
 
-In the mid-2000s, **Gh0s7 H4x** (developed by the **xZone-Reactor** group for Counter-Strike 1.6 / GoldSrc) was one of the most prominent private utilities in the competitive scene. The binary was originally protected with a multi-stage crypter/packer (Reactor / X-Protector) containing anti-debugging traps, VM instruction virtualization, and MSVC licensing checks wrapped around a pure **Borland Delphi 6/7** core payload.
+In the mid-2000s, Gh0s7 H4x (developed by the xZone-Reactor group) was one of the widely used private utilities for Counter-Strike 1.6. The original binary was protected with a multi-stage crypter/packer (Reactor / X-Protector) containing anti-debugging traps, VM instruction virtualization, and MSVC licensing checks wrapped around a Borland Delphi 6/7 core payload.
 
-### 🎮 Game Version & Anti-Cheat Compatibility
-* **Target Game Version**: Strictly designed for **Counter-Strike 1.6 Protocol 47 (v47 / Build 3266)**.
-* **Anti-Cheat Lifecycle**: The original developers maintained bypass updates up to **sXe-Injected 16.2** before abandoning the utility, despite sXe-Injected eventually releasing up to version **17.2**.
-* **Modern Status (Obsolete)**: Today, this codebase is completely **obsolete for live gameplay**. Modern GoldSrc server-side anti-cheat defenses (ReHLDS, WHBlocker, Reunion, AimDetector) instantly detect and block these legacy client-side memory modifications, even though the vast majority of cheats from that golden era shared this exact same underlying architectural code and mathematical choke points.
+### Game Version and Anti-Cheat Compatibility
+* **Target Version**: Designed specifically for Counter-Strike 1.6 Protocol 47 (v47 / Build 3266).
+* **Anti-Cheat Lifecycle**: The developers maintained bypass updates up to sXe-Injected 16.2 before abandoning the utility, although sXe-Injected released up to version 17.2 before closing down.
+* **Current Status**: Today this codebase is obsolete for actual gameplay. Modern server-side defenses (ReHLDS, WHBlocker, Reunion, AimDetector) immediately block these legacy memory hooks, though most cheats from that era shared this same underlying Delphi/C++ code.
 
 This repository provides:
-1. **Raw Memory Dumps & Unpacked Binaries**: The original decrypted process memory dump (`payload_memory_dump.bin`) and standalone cleaned PE binary (`lolwut_clean.dll`).
-2. **Complete Disassembly & Decompilation**: Over 55,500 annotated instructions in `disassembly_delphi_code.asm`.
-3. **Modular Reconstructed Source Code**: 100% human-readable, decoupled, compile-ready implementations in both **C++17** and **Borland Delphi/Pascal**, free of protector code or external DRM hooks.
+1. **Raw Memory Dumps & Unpacked Binaries**: Original decrypted process memory dump (`payload_memory_dump.bin`), original packed binary (`lolwut32.dll`), and standalone cleaned PE binary (`lolwut_clean.dll`).
+2. **Disassembly & Decompilation**: Over 55,500 annotated instructions in `disassembly_delphi_code.asm`.
+3. **Reconstructed Source Code**: Modular, compile-ready implementations in C++17 and Borland Delphi/Pascal without protector code.
 
 ---
 
-## 📺 Video Showcase
+## Video Demonstration
 
 [![Gh0s7 h4x v12.3 - sXe Injected v15.1](https://i.ytimg.com/vi/R5j96yzvRZA/hqdefault.jpg)](https://www.youtube.com/watch?v=R5j96yzvRZA)
 
-*▶️ [Watch: [Private Cheat] Gh0s7 h4x v12.3 - sXe Injected v15.1 on YouTube](https://www.youtube.com/watch?v=R5j96yzvRZA)*
+Video link: https://www.youtube.com/watch?v=R5j96yzvRZA
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 ```text
-gh0s7h4x-reconstructed/
-├── CMakeLists.txt              # Modern CMake build script (MSVC / MinGW)
+├── CMakeLists.txt              # CMake build script for C++
 ├── LICENSE                     # MIT License
-├── README.md                   # Project documentation and build guide
-├── .gitignore                  # Git ignore rules for Delphi, MSVC, and Python
+├── README.md
+├── .gitignore
 │
-├── artifacts/                  # Forensic binaries, dumps & disassembly
+├── artifacts/                  # Forensic binaries, dumps and disassembly
 │   ├── lolwut32.dll            # Original packed binary from leak (1.27 MB)
-│   ├── lolwut_clean.dll        # Modern Windows (Win10/11) patched & unpacked PE binary (1.57 MB)
+│   ├── lolwut_clean.dll        # Patched & unpacked PE binary for Windows 10/11 (1.57 MB)
 │   ├── payload_memory_dump.bin # Raw process memory dump (Base 0x04C50000, 1.44 MB)
 │   ├── iat_resolved.txt        # Resolved IAT imports table
 │   ├── relocs_v5.bin           # Serialized base relocation table
@@ -54,22 +47,22 @@ gh0s7h4x-reconstructed/
 │   └── decompiled_source.pas   # Base decompiled Delphi Pascal core unit
 │
 ├── config/
-│   └── gh0s7h4x12.ini          # Reference configuration file (40 parameters)
+│   └── gh0s7h4x12.ini          # Configuration file (40 parameters)
 │
 ├── docs/
-│   └── OFFSETS.md              # Full memory map, RVAs, and struct offsets
+│   └── OFFSETS.md              # Memory map, RVAs, and struct offsets
 │
 ├── tools/
 │   ├── build_perfect_clean.py  # Unpacker & standalone clean PE reconstructor
-│   ├── symbols_map.py          # Master symbol mapping generator
-│   ├── apply_symbols_ida.idc   # Automated IDA Pro symbol script
-│   └── apply_symbols_ghidra.py # Automated Ghidra symbol script
+│   ├── symbols_map.py          # Symbol mapping generator
+│   ├── apply_symbols_ida.idc   # IDA Pro symbol script
+│   └── apply_symbols_ghidra.py # Ghidra symbol script
 │
 └── src/
-    ├── cpp/                    # Native C++ modular implementation
+    ├── cpp/                    # Modular C++17 implementation
     │   ├── SDK.hpp             # Shared GoldSrc & Half-Life structures
     │   ├── Aimbot.cpp          # Angle decay smoothing choke point
-    │   ├── AimbotTarget.cpp    # 2D Screen-space FOV and bone targeting
+    │   ├── AimbotTarget.cpp    # 2D screen FOV and bone targeting
     │   ├── BarrelHack.cpp      # 3D forward projection laser beam
     │   ├── ESP.cpp             # Box, Name, Weapon, and Distance ESP
     │   ├── GlowLight.cpp       # Local glow, player glow, and dynamic lights
@@ -80,10 +73,10 @@ gh0s7h4x-reconstructed/
     │   ├── VisualsOpenGL.cpp   # AsusWallhack, Lambert, WhiteWalls, NightMode
     │   └── WallhackExtra.cpp   # SimpleWall, Unlit shader, EntityESP, Autowall
     │
-    └── delphi/                 # Pure Borland Delphi 6/7 Pascal implementation
+    └── delphi/                 # Borland Delphi 6/7 Pascal implementation
         ├── Gh0s7H4x.dpr        # Master Delphi DLL project & worker thread
         ├── Types.pas           # Vectors, usercmd_s, and entity definitions
-        ├── Config.pas          # Complete 40-key INI parser and serializer
+        ├── Config.pas          # 40-key INI parser and serializer
         ├── Math3D.pas          # FPU x87 vector math library & normalization
         ├── Hooks.pas           # CL_CreateMove, HUD_Redraw, HUD_Key_Event
         ├── Aimbot.pas
@@ -101,9 +94,9 @@ gh0s7h4x-reconstructed/
 
 ---
 
-## 🎯 Modular Architecture & Forensic Offsets
+## Architecture and Offsets
 
-| Feature / Setting | Module | Original RVA / Offset | Description |
+| Setting / Feature | Module | Original RVA / Offset | Description |
 | :--- | :--- | :--- | :--- |
 | `aimbot`, `norecoil`, `silentaim` | `Aimbot` | RVA `0x2090C` (`0x04C7090C`) | Exponential decay angle smoothing choke point |
 | `aimspot`, `aimfov`, `aimteam` | `AimbotTarget` | RVA `0x24CE0` (`0x04C74CE0`) | 2D screen FOV bounding box & bone targeting |
@@ -118,70 +111,58 @@ gh0s7h4x-reconstructed/
 | `bhop`, `fastrun`, `speedhack` | `Movement` | RVA `0x252BF`, `0x25131` | Auto-jump on `FL_ONGROUND`, sidemove oscillation |
 | `CL_CreateMove`, `HUD_Redraw` | `Hooks` | RVA `0x2530D`, `0x24DA0` | Command modification & frame render dispatchers |
 
-For the complete technical breakdown of all 40 variables and struct alignments, refer to [docs/OFFSETS.md](docs/OFFSETS.md).
+For the complete technical breakdown of all 40 variables and struct alignments, see `docs/OFFSETS.md`.
 
 ---
 
-## 🛡️ Modern Windows (Win10 / Win11) Patches in `lolwut_clean.dll`
+## Modern Windows (Win10 / Win11) Patches in lolwut_clean.dll
 
-The pre-built standalone binary `artifacts/lolwut_clean.dll` has been specifically repaired and patched for modern Windows environments:
+The binary in `artifacts/lolwut_clean.dll` has been repaired and patched for modern Windows:
 
-1. **Modern OpenGL Driver Compatibility**: Neutralized destructive Windows XP-era `glTexEnvf` hook skips at RVA `0x2655E..0x2658C`, preventing crashes on modern NVIDIA, AMD, and Intel WDDM graphics drivers.
-2. **Safe GetProcAddress Hook Guard**: Added parameter validation guard at RVA `0x257C4` to prevent `0xC0000005` Access Violation crashes when modern Windows components or overlays pass ordinals or non-user memory pointers.
-3. **Dynamic IAT & Relocations**: Replaced stripped protector tables with a standard 148-entry IAT and 9,000 base relocations, ensuring full compatibility with Windows ASLR.
-4. **Protector VM Neutralization**: The original Delphi `DllMain` entry point at RVA `0x26FA9` is patched to jump directly to `0x27091`, bypassing the Reactor VM anti-tamper stub.
-5. **Dynamic Path Isolation**: Replaced hardcoded paths with runtime resolution via `GetModuleFileNameA`, automatically reading `config/gh0s7h4x12.ini` relative to wherever the DLL is placed.
+1. **OpenGL Driver Compatibility**: Neutralized destructive Windows XP-era `glTexEnvf` hook skips at RVA `0x2655E..0x2658C`, preventing crashes on modern NVIDIA, AMD, and Intel graphics drivers.
+2. **Safe GetProcAddress Hook Guard**: Parameter validation guard at RVA `0x257C4` to prevent `0xC0000005` Access Violation crashes when modern Windows components or overlays pass ordinals or non-user memory pointers.
+3. **Dynamic IAT & Relocations**: Standard 148-entry IAT and 9,000 base relocations for compatibility with ASLR.
+4. **Protector VM Neutralization**: Original Delphi `DllMain` entry point at RVA `0x26FA9` is patched to jump directly to `0x27091`, bypassing the Reactor VM stub.
+5. **Dynamic Path Isolation**: Runtime resolution via `GetModuleFileNameA`, automatically reading `gh0s7h4x12.ini` relative to the DLL location without fixed paths.
 
 ---
 
-## 🛠️ Building the Project
+## Building
 
-### Option A: Borland Delphi (Native Original Engine)
+### Borland Delphi
 1. Open Borland Delphi 6, Delphi 7, or Embarcadero RAD Studio.
 2. Open `src/delphi/Gh0s7H4x.dpr`.
-3. Select **Release** build target and compile (`Ctrl + F9`).
+3. Select Release and compile (`Ctrl + F9`).
 4. Output: `gh0s7h4x.dll`.
 
-### Option B: C++ with CMake & MSVC
-1. Open a terminal or Developer Command Prompt.
-2. Run CMake:
-   ```bash
-   cmake -B build -A Win32
-   cmake --build build --config Release
-   ```
-3. Output: `build/Release/gh0s7h4x.dll`.
+### C++ (CMake)
+```bash
+cmake -B build -A Win32
+cmake --build build --config Release
+```
+Output: `build/Release/gh0s7h4x.dll`.
 
 ---
 
-## 🔍 Disassembly & Symbol Tools
+## Disassembly & Symbol Tools
 
-To import all reconstructed symbols and subroutines into your reverse engineering platform of choice:
-
-* **IDA Pro:**
-  1. Load `artifacts/payload_memory_dump.bin` or `artifacts/lolwut_clean.dll` at base `0x04C50000`.
-  2. In IDA, navigate to `File` -> `Script file...` -> select `tools/apply_symbols_ida.idc`.
-* **Ghidra:**
-  1. Open the project in the CodeBrowser.
-  2. Open the `Script Manager` -> `Run Script` -> select `tools/apply_symbols_ghidra.py`.
+* **IDA Pro:** Load binary at base `0x04C50000` -> `File` -> `Script file...` -> select `tools/apply_symbols_ida.idc`.
+* **Ghidra:** In CodeBrowser -> `Script Manager` -> select `tools/apply_symbols_ghidra.py`.
 
 ---
 
-## 🤖 Methodology & Tooling Credits
-
-The reverse engineering, binary analysis, and complete source code reconstruction in this repository were conducted utilizing:
+## Methodology & Tooling Credits
 
 * **OpenCode**: Autonomous reverse engineering environment and binary analysis harness used for memory dumping, unpacker prototyping, and forensic discovery. Models utilized during the RE sessions:
-  * **GLM-5.3 Uncensored**
-  * **MiniMax M3.1 Flash** (Reasoning)
-  * **DeepSeek V4.1 Flash**
-  * **GLM-5.3 Flash**
-* **Gemini 3.8 Flash High**: Deep binary reasoning, disassembly interpretation, x87 FPU-to-IEEE 754 vector math algebraic reconstruction, and clean modular source generation across both modern C++17 and Borland Delphi 7.
+  * GLM-5.3 Uncensored
+  * MiniMax M3.1 Flash (Reasoning)
+  * DeepSeek V4.1 Flash
+  * GLM-5.3 Flash
+* **Gemini 3.8 Flash High**: Binary reasoning, disassembly interpretation, x87 FPU-to-IEEE 754 vector math algebraic reconstruction, and clean modular source generation across both modern C++17 and Borland Delphi 7.
 * **Ghidra & IDA Pro**: Interactive disassembly, control-flow graph validation, and RVA symbol mapping.
 
 ---
 
-## ⚠️ Disclaimer & Educational Notice
+## Disclaimer
 
-This repository contains clean-room reverse engineering and software reconstruction conducted strictly for **educational purposes, forensic analysis, game engine architecture research, and video game software preservation**. 
-
-All original binary protection mechanisms, DRM wrappers, and third-party commercial components have been discarded in favor of pure, readable source code.
+This repository contains reverse engineering and software reconstruction conducted strictly for educational purposes, forensic analysis, game engine architecture research, and video game software preservation.
