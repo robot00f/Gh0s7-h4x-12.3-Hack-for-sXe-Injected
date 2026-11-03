@@ -42,8 +42,6 @@ begin
   // Resolve DLL path and load configuration INI
   GetModuleFileNameA(hInstance, szDllPath, MAX_PATH);
   szIniPath := ExtractFilePath(string(szDllPath)) + 'gh0s7h4x12.ini';
-  if not FileExists(szIniPath) then
-    szIniPath := ExtractFilePath(string(szDllPath)) + 'gh0s7h4x11.ini';
 
   LoadConfig(szIniPath);
 

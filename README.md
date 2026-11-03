@@ -38,9 +38,7 @@ gh0s7h4x-reconstructed/
 │   └── decompiled_source.pas   # Base decompiled Delphi Pascal core unit
 │
 ├── config/
-│   ├── gh0s7h4x.ini            # Reference configuration template (40 parameters)
-│   ├── gh0s7h4x11.ini          # Original v11 configuration file
-│   └── gh0s7h4x12.ini          # Original v12 configuration file
+│   └── gh0s7h4x12.ini          # Reference configuration file (40 parameters)
 │
 ├── docs/
 │   └── OFFSETS.md              # Full memory map, RVAs, and struct offsets
