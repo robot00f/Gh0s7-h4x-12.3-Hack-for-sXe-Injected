@@ -1,4 +1,4 @@
-# Gh0s7H4x Reconstructed (xZone-Reactor CS 1.6 Leak)
+# Gh0s7 h4x 12.3 Hack for sXe-Injected (xZone-Reactor CS 1.6)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Target: Counter-Strike 1.6](https://img.shields.io/badge/Target-GoldSrc%201.6-orange.svg)]()
