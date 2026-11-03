@@ -32,7 +32,7 @@ gh0s7h4x-reconstructed/
 │
 ├── artifacts/                  # Forensic binaries, dumps & disassembly
 │   ├── lolwut32.dll            # Original packed binary from leak (1.27 MB)
-│   ├── lolwut_clean.dll        # Unpacked & repaired PE binary (1.57 MB)
+│   ├── lolwut_clean.dll        # Modern Windows (Win10/11) patched & unpacked PE binary (1.57 MB)
 │   ├── payload_memory_dump.bin # Raw process memory dump (Base 0x04C50000, 1.44 MB)
 │   ├── iat_resolved.txt        # Resolved IAT imports table
 │   ├── relocs_v5.bin           # Serialized base relocation table
@@ -106,6 +106,18 @@ gh0s7h4x-reconstructed/
 | `CL_CreateMove`, `HUD_Redraw` | `Hooks` | RVA `0x2530D`, `0x24DA0` | Command modification & frame render dispatchers |
 
 For the complete technical breakdown of all 40 variables and struct alignments, refer to [docs/OFFSETS.md](docs/OFFSETS.md).
+
+---
+
+## 🛡️ Modern Windows (Win10 / Win11) Patches in `lolwut_clean.dll`
+
+The pre-built standalone binary `artifacts/lolwut_clean.dll` has been specifically repaired and patched for modern Windows environments:
+
+1. **Modern OpenGL Driver Compatibility**: Neutralized destructive Windows XP-era `glTexEnvf` hook skips at RVA `0x2655E..0x2658C`, preventing crashes on modern NVIDIA, AMD, and Intel WDDM graphics drivers.
+2. **Safe GetProcAddress Hook Guard**: Added parameter validation guard at RVA `0x257C4` to prevent `0xC0000005` Access Violation crashes when modern Windows components or overlays pass ordinals or non-user memory pointers.
+3. **Dynamic IAT & Relocations**: Replaced stripped protector tables with a standard 148-entry IAT and 9,000 base relocations, ensuring full compatibility with Windows ASLR.
+4. **Protector VM Neutralization**: The original Delphi `DllMain` entry point at RVA `0x26FA9` is patched to jump directly to `0x27091`, bypassing the Reactor VM anti-tamper stub.
+5. **Dynamic Path Isolation**: Replaced hardcoded paths with runtime resolution via `GetModuleFileNameA`, automatically reading `config/gh0s7h4x12.ini` relative to wherever the DLL is placed.
 
 ---
 
