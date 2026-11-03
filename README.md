@@ -14,6 +14,11 @@
 
 In the mid-2000s, **Gh0s7 H4x** (developed by the **xZone-Reactor** group for Counter-Strike 1.6 / GoldSrc) was one of the most prominent private utilities in the competitive scene. The binary was originally protected with a multi-stage crypter/packer (Reactor / X-Protector) containing anti-debugging traps, VM instruction virtualization, and MSVC licensing checks wrapped around a pure **Borland Delphi 6/7** core payload.
 
+### 🎮 Game Version & Anti-Cheat Compatibility
+* **Target Game Version**: Strictly designed for **Counter-Strike 1.6 Protocol 47 (v47 / Build 3266)**.
+* **Anti-Cheat Lifecycle**: The original developers maintained bypass updates up to **sXe-Injected 16.2** before abandoning the utility, despite sXe-Injected eventually releasing up to version **17.2**.
+* **Modern Status (Obsolete)**: Today, this codebase is completely **obsolete for live gameplay**. Modern GoldSrc server-side anti-cheat defenses (ReHLDS, WHBlocker, Reunion, AimDetector) instantly detect and block these legacy client-side memory modifications, even though the vast majority of cheats from that golden era shared this exact same underlying architectural code and mathematical choke points.
+
 This repository provides:
 1. **Raw Memory Dumps & Unpacked Binaries**: The original decrypted process memory dump (`payload_memory_dump.bin`) and standalone cleaned PE binary (`lolwut_clean.dll`).
 2. **Complete Disassembly & Decompilation**: Over 55,500 annotated instructions in `disassembly_delphi_code.asm`.
