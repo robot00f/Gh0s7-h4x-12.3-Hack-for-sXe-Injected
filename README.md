@@ -153,6 +153,16 @@ To import all reconstructed symbols and subroutines into your reverse engineerin
 
 ---
 
+## 🤖 Methodology & Tooling Credits
+
+The reverse engineering, binary analysis, and complete source code reconstruction in this repository were conducted utilizing:
+
+* **OpenCode**: Autonomous reverse engineering environment and binary analysis harness used for dumping, unpacker prototyping, and forensic discovery.
+* **Gemini 3.8 Flash High**: Deep binary reasoning, disassembly interpretation, x87 FPU-to-IEEE 754 vector math algebraic reconstruction, and clean modular source generation across both modern C++17 and Borland Delphi 7.
+* **Ghidra & IDA Pro**: Interactive disassembly, control-flow graph validation, and RVA symbol mapping.
+
+---
+
 ## ⚠️ Disclaimer & Educational Notice
 
 This repository contains clean-room reverse engineering and software reconstruction conducted strictly for **educational purposes, forensic analysis, game engine architecture research, and video game software preservation**. 
