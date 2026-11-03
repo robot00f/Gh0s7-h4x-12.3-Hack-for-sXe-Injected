@@ -21,6 +21,14 @@ This repository provides:
 
 ---
 
+## 📺 Video Showcase
+
+[![Gh0s7 h4x v12.3 - sXe Injected v15.1](https://i.ytimg.com/vi/R5j96yzvRZA/hqdefault.jpg)](https://www.youtube.com/watch?v=R5j96yzvRZA)
+
+*▶️ [Watch: [Private Cheat] Gh0s7 h4x v12.3 - sXe Injected v15.1 on YouTube](https://www.youtube.com/watch?v=R5j96yzvRZA)*
+
+---
+
 ## 📂 Repository Structure
 
 ```text
